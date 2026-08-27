@@ -1,0 +1,32 @@
+# Dependências
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Variáveis de ambiente
+.env
+.env.local
+.env.production
+.env.development
+
+# Pasta de build
+dist/
+build/
+
+# Cobertura de testes
+coverage/
+
+# Cache
+.cache/
+.eslintcache
+
+# Arquivos temporários do editor
+.vscode/
+.idea/
