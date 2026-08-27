@@ -1,27 +1,29 @@
 {
-  "name": "diario-de-bordo",
-  "version": "1.0.0",
-  "description": "Título: Diário de Bordo",
-  "main": "script.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ."
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tayanibritto/diario-de-bordo.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/tayanibritto/diario-de-bordo/issues"
-  },
-  "homepage": "https://github.com/tayanibritto/diario-de-bordo#readme",
-  "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "eslint": "^10.9.1",
-    "globals": "^17.11.0"
-  }
+    "name": "diario-de-bordo",
+    "version": "1.0.0",
+    "description": "Título: Diário de Bordo",
+    "main": "script.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint .",
+        "format": "prettier --write ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tayanibritto/diario-de-bordo.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "bugs": {
+        "url": "https://github.com/tayanibritto/diario-de-bordo/issues"
+    },
+    "homepage": "https://github.com/tayanibritto/diario-de-bordo#readme",
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "eslint": "^10.9.1",
+        "globals": "^17.11.0",
+        "prettier": "^3.9.6"
+    }
 }

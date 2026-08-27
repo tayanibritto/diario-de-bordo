@@ -9,6 +9,7 @@ Instalação:
 Passos para clonar e rodar: git clone https://github.com/tayanibritto/diario-de-bordo.git · cd diario-de-bordo · abrir o arquivo index.html no navegador, clicando duas vezes no arquivo ou · usando uma extensão como Live Server (opcional): abra o projeto no Visual Studio Code, instale a extensão Live Server (caso ainda não tenha), clique com o botão direito no arquivo index.html e selecione "Open with Live Server"
 
 Funcionalidades:
+
 - Criar entradas com título, descrição e data;
 - Listar entradas registradas;
 - Remover entradas

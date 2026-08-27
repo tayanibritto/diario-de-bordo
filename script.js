@@ -90,7 +90,7 @@ form.addEventListener("submit", function (e) {
     const newExp = {
         title: titleInput.value,
         description: descInput.value,
-        date: dateInput.value
+        date: dateInput.value,
     };
 
     localList.push(newExp);
@@ -115,7 +115,8 @@ renderList();
 // Registrar Service Worker
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./service-worker.js")
+        navigator.serviceWorker
+            .register("./service-worker.js")
             .then(() => console.log("Service Worker registrado com sucesso"))
             .catch((error) => console.log("Erro ao registrar Service Worker: ", error));
     });
@@ -123,7 +124,7 @@ if ("serviceWorker" in navigator) {
 
 // Verificar se o app está instalado
 function isAppInstalled() {
-    return window.matchMedia('(display-mode: standalone)').matches;
+    return window.matchMedia("(display-mode: standalone)").matches;
 }
 
 // Controle inicial do botão "Instalar App"
@@ -164,10 +165,9 @@ installBtn.addEventListener("click", async () => {
 window.addEventListener("appinstalled", () => {
     console.log("App instalado com sucesso");
     installBtn.style.display = "none";
-})
+});
 
 // Executa ao carregar
 document.addEventListener("DOMContentLoaded", () => {
     controlInstallButton();
 });
-
