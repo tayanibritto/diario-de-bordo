@@ -29,6 +29,45 @@ function formatDate(dateString) {
     return `${day}/${month}/${year}`;
 }
 
+// Criar item de experiência
+function createExperienceItem(experiencia, index) {
+    const li = document.createElement("li");
+
+    const title = document.createElement("strong");
+    title.textContent = experiencia.title;
+
+    const description = document.createElement("span");
+    description.textContent = experiencia.description;
+
+    const date = document.createElement("small");
+    date.textContent = formatDate(experiencia.date);
+
+    const button = document.createElement("button");
+
+    button.classList.add("remove-btn");
+
+    button.setAttribute("aria-label", "Botão de Remover Experiência");
+
+    button.textContent = "X";
+
+    button.addEventListener("click", () => {
+        removeExp(index);
+    });
+
+    li.appendChild(title);
+    li.appendChild(document.createElement("br"));
+
+    li.appendChild(description);
+    li.appendChild(document.createElement("br"));
+
+    li.appendChild(date);
+    li.appendChild(document.createElement("br"));
+
+    li.appendChild(button);
+
+    return li;
+}
+
 // Renderizar a lista de experiências
 function renderList() {
     rgList.innerHTML = "";
@@ -36,27 +75,9 @@ function renderList() {
     const fragment = document.createDocumentFragment();
 
     localList.forEach((experiencia, index) => {
-        const li = document.createElement("li");
+        const item = createExperienceItem(experiencia, index);
 
-        li.innerHTML = `
-            <strong>${experiencia.title}</strong><br>
-            <span>${experiencia.description}</span><br>
-            <small>${formatDate(experiencia.date)}</small><br>
-
-            <button class="remove-btn" aria-label="Botão de Remover Experiência" data-index="${index}">
-                X
-            </button>
-        `;
-
-        // Seleciona o botão de remover dentro do li
-        const button = li.querySelector(".remove-btn");
-
-        // Adiciona o evento removeExp
-        button.addEventListener("click", () => {
-            removeExp(index);
-        });
-
-        fragment.appendChild(li);
+        fragment.appendChild(item);
     });
 
     rgList.appendChild(fragment);
