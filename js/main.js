@@ -1,4 +1,5 @@
 import { formatDate, sortByDate } from "./utils.js";
+import { getExperiences, saveExperiences } from "./storage.js";
 
 //Seletores
 const form = document.getElementById("rgForm");
@@ -10,13 +11,8 @@ let deferredPrompt = null;
 const installBtn = document.getElementById("installBtn");
 
 // Carregar dados do localStorage
-let localList = JSON.parse(localStorage.getItem("localList")) || [];
+let localList = getExperiences();
 localList = sortByDate(localList);
-
-// Salvar dados no localStorage
-function saveList() {
-    localStorage.setItem("localList", JSON.stringify(localList));
-}
 
 // Criar item de experiência
 function createExperienceItem(experiencia, index) {
@@ -84,7 +80,7 @@ form.addEventListener("submit", function (e) {
 
     localList.push(newExp);
     localList = sortByDate(localList);
-    saveList();
+    saveExperiences(localList);
     renderList();
 
     // Limpar formulário
@@ -94,7 +90,7 @@ form.addEventListener("submit", function (e) {
 // Remover entrada
 function removeExp(index) {
     localList.splice(index, 1);
-    saveList();
+    saveExperiences(localList);
     renderList();
 }
 
