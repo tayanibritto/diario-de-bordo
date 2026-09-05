@@ -1,5 +1,6 @@
-import { formatDate, sortByDate } from "./utils.js";
+import { sortByDate } from "./utils.js";
 import { getExperiences, saveExperiences } from "./storage.js";
+import { renderList } from "./ui.js";
 
 //Seletores
 const form = document.getElementById("rgForm");
@@ -14,60 +15,6 @@ const installBtn = document.getElementById("installBtn");
 let localList = getExperiences();
 localList = sortByDate(localList);
 
-// Criar item de experiência
-function createExperienceItem(experiencia, index) {
-    const li = document.createElement("li");
-
-    const title = document.createElement("strong");
-    title.textContent = experiencia.title;
-
-    const description = document.createElement("span");
-    description.textContent = experiencia.description;
-
-    const date = document.createElement("small");
-    date.textContent = formatDate(experiencia.date);
-
-    const button = document.createElement("button");
-
-    button.classList.add("remove-btn");
-
-    button.setAttribute("aria-label", "Botão de Remover Experiência");
-
-    button.textContent = "X";
-
-    button.addEventListener("click", () => {
-        removeExp(index);
-    });
-
-    li.appendChild(title);
-    li.appendChild(document.createElement("br"));
-
-    li.appendChild(description);
-    li.appendChild(document.createElement("br"));
-
-    li.appendChild(date);
-    li.appendChild(document.createElement("br"));
-
-    li.appendChild(button);
-
-    return li;
-}
-
-// Renderizar a lista de experiências
-function renderList() {
-    rgList.innerHTML = "";
-
-    const fragment = document.createDocumentFragment();
-
-    localList.forEach((experiencia, index) => {
-        const item = createExperienceItem(experiencia, index);
-
-        fragment.appendChild(item);
-    });
-
-    rgList.appendChild(fragment);
-}
-
 // Adicionar nova entrada
 form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -81,7 +28,7 @@ form.addEventListener("submit", function (e) {
     localList.push(newExp);
     localList = sortByDate(localList);
     saveExperiences(localList);
-    renderList();
+    renderList(rgList, localList, removeExp);
 
     // Limpar formulário
     form.reset();
@@ -91,11 +38,11 @@ form.addEventListener("submit", function (e) {
 function removeExp(index) {
     localList.splice(index, 1);
     saveExperiences(localList);
-    renderList();
+    renderList(rgList, localList, removeExp);
 }
 
 // Renderizar lista ao carregar
-renderList();
+renderList(rgList, localList, removeExp);
 
 // Registrar Service Worker
 if ("serviceWorker" in navigator) {
